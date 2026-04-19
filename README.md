@@ -6,25 +6,35 @@ This project studies whether speaking order is associated with judge-assigned ra
 
 The current analysis suggests a small **primacy bias**: earlier speakers tended to receive slightly better ranks on average. The effect is statistically detectable in the linear model, but the overall explained variance is still small.
 
+### Figure 1. Mean Rank by Raw Speaking Position
+
 ![Mean rank by speaking position](figures/mean_rank_by_position.png)
 
-Average rank by raw speaking position. Lower rank is better, so lower values for earlier positions are consistent with primacy rather than recency.
+X-axis: raw speaking position within a panel, such as 1st speaker, 2nd speaker, and so on. Y-axis: mean judge-assigned rank, where lower rank is better. This figure shows the average outcome at each exact speaking slot.
+
+### Figure 2. Mean Rank by Normalized Speaking Position
 
 ![Mean rank by normalized position](figures/mean_rank_by_normalized_position.png)
 
-Average rank by normalized speaking position with a fitted line. The positive slope indicates that later positions were associated with worse ranks on average.
+X-axis: normalized speaking position from 0 to 1, where 0 is the earliest speaker in a panel and 1 is the latest. Y-axis: mean judge-assigned rank, where lower rank is better. The blue series shows average rank by position band, and the red line is the fitted linear trend.
+
+### Figure 3. Early vs. Middle vs. Late Speaking Positions
 
 ![Early middle late comparison](figures/early_middle_late_comparison.png)
 
-This groups speakers into early, middle, and late positions. The early bin performed best on average, while the late bin performed worst.
+X-axis: grouped speaking-order bins: early, middle, and late. Y-axis: mean judge-assigned rank, where lower rank is better. This figure is the clearest grouped comparison of whether earlier or later speaking slots tend to do better.
+
+### Figure 4. Quadratic Model Prediction Curve
 
 ![Quadratic model prediction curve](figures/model_prediction_curve.png)
 
-This curve shows the quadratic model fit across the speaking-order range. In this dataset, the curve does not suggest a strong extra edge effect beyond the main linear trend.
+X-axis: normalized speaking position from earliest to latest. Y-axis: predicted rank from the quadratic model, where lower rank is better. This graph shows whether the fitted relationship bends at the edges instead of following only a straight-line trend.
+
+### Figure 5. Panel Size Distribution
 
 ![Panel size distribution](figures/panel_size_distribution.png)
 
-Most observations come from panels of five to seven speakers. That matters because the normalized-position analysis depends on panel size.
+X-axis: panel size, meaning the number of competitors in a judge panel. Y-axis: number of observations in the cleaned dataset. This figure shows how much of the analysis comes from smaller versus larger extemp panels.
 
 ## Data Source
 

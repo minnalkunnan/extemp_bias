@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speaking Order Bias in Extemporaneous Speaking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Speaking Order Bias in Extemporaneous Speaking</h1>
+  <p>This site summarizes a ballot-level analysis of speaking order and judge-assigned rank in extemporaneous speaking rounds drawn from a Gabrielino-attended Tabroom tournament set. Lower rank is better.</p>
+
+  <h2>Methods</h2>
+  <p>Each observation is a competitor-by-judge row from a round-results ballot. Panels were cleaned so speaking positions start at 1, run contiguously, and contain no duplicate competitors within the same tournament + event + round_id + judge panel.</p>
+
+  <h2>Key Dataset Stats</h2>
+  <div class="grid">
+    <div class="card"><strong>Tournaments</strong><br>7</div>
+    <div class="card"><strong>Panels</strong><br>435</div>
+    <div class="card"><strong>Judges</strong><br>360</div>
+    <div class="card"><strong>Observations</strong><br>2589</div>
+  </div>
+
+  <h2>Results</h2>
+  <p>The clearest overall result is: <strong>primacy bias</strong>.</p>
+  <p>This interpretation is based on cleaned ballot data, descriptive means, and linear / quadratic models where lower rank indicates a better outcome.</p>
+
+  <figure>
+    <img src="../figures/mean_rank_by_position.png" alt="Mean rank by speaking position">
+    <figcaption>Mean rank by raw speaking position.</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/mean_rank_by_normalized_position.png" alt="Mean rank by normalized position">
+    <figcaption>Mean rank by normalized position with linear fit.</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/early_middle_late_comparison.png" alt="Early middle late comparison">
+    <figcaption>Average rank in early, middle, and late speaking slots.</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/model_prediction_curve.png" alt="Quadratic model prediction curve">
+    <figcaption>Quadratic model prediction curve.</figcaption>
+  </figure>
+  <figure>
+    <img src="../figures/panel_size_distribution.png" alt="Panel size distribution">
+    <figcaption>Panel size distribution in the cleaned dataset.</figcaption>
+  </figure>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>Judge heterogeneity can still influence ranks.</li>
+    <li>Speaking order may not be randomly assigned.</li>
+    <li>The dataset is limited to tournaments where Gabrielino attended and the relevant Tabroom ballot pages were available.</li>
+  </ul>
+</body>
+</html>

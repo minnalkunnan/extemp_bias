@@ -2,6 +2,30 @@
 
 This project studies whether speaking order is associated with judge-assigned rank in extemporaneous speaking rounds collected from Tabroom ballot pages tied to a Gabrielino-attended tournament set.
 
+## Results
+
+The current analysis suggests a small **primacy bias**: earlier speakers tended to receive slightly better ranks on average. The effect is statistically detectable in the linear model, but the overall explained variance is still small.
+
+![Mean rank by speaking position](figures/mean_rank_by_position.png)
+
+Average rank by raw speaking position. Lower rank is better, so lower values for earlier positions are consistent with primacy rather than recency.
+
+![Mean rank by normalized position](figures/mean_rank_by_normalized_position.png)
+
+Average rank by normalized speaking position with a fitted line. The positive slope indicates that later positions were associated with worse ranks on average.
+
+![Early middle late comparison](figures/early_middle_late_comparison.png)
+
+This groups speakers into early, middle, and late positions. The early bin performed best on average, while the late bin performed worst.
+
+![Quadratic model prediction curve](figures/model_prediction_curve.png)
+
+This curve shows the quadratic model fit across the speaking-order range. In this dataset, the curve does not suggest a strong extra edge effect beyond the main linear trend.
+
+![Panel size distribution](figures/panel_size_distribution.png)
+
+Most observations come from panels of five to seven speakers. That matters because the normalized-position analysis depends on panel size.
+
 ## Data Source
 
 The source data comes from Tabroom round-results ballot pages that include competitor names, judges, speaking order, and ranks.

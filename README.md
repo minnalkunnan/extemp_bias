@@ -6,6 +6,13 @@ This project studies whether speaking order is associated with judge-assigned ra
 
 The current standardized analysis finds **no clear speaking-order bias**. Later speakers do not show a statistically reliable advantage, earlier speakers do not show a statistically reliable advantage, and the quadratic model does not show meaningful edge effects.
 
+Hypothesis test framing:
+- Null hypothesis (`H0`): speaking order is not associated with judge-assigned rank in this sample.
+- Alternative hypothesis (`H1`): speaking order is associated with judge-assigned rank in this sample.
+- Linear test result: the normalized-position coefficient is `-0.0592` with `p = 0.3416`, so at conventional significance thresholds we **fail to reject the null hypothesis** for a linear primacy or recency effect.
+- Quadratic test result: the normalized-position-squared coefficient is `-0.2083` with `p = 0.3296`, so we also **fail to reject the null hypothesis** for a curved or edge-effect pattern.
+- Interpretation: average ranks vary across exact speaking slots, but the overall early-to-late pattern is not statistically reliable in the standardized sample.
+
 Model evidence:
 - Linear normalized-position slope: `-0.0592` with `p = 0.3416`
 - Quadratic normalized-position-squared term: `-0.2083` with `p = 0.3296`

@@ -1,66 +1,68 @@
 # Speaking Order Bias In Extemporaneous Speaking
 
-This project studies whether speaking order is associated with judge-assigned rank in extemporaneous speaking rounds collected from Tabroom ballot pages tied to a Gabrielino-attended tournament set.
+This project studies whether speaking order is associated with judge-assigned rank in extemporaneous speaking rounds collected from Tabroom ballot pages. The main version of the analysis now uses a standardized California championship-path sample: CHSSA state championships, CHSSA state qualifiers, and NSDA district national-qualifier tournaments.
 
 ## Results
 
-The current analysis suggests a small **primacy bias**: earlier speakers tended to receive slightly better ranks on average. The effect is statistically detectable in the linear model, but the overall explained variance is still small.
+The current standardized analysis finds **no clear speaking-order bias**. Later speakers do not show a statistically reliable advantage, earlier speakers do not show a statistically reliable advantage, and the quadratic model does not show meaningful edge effects.
+
+Key sample stats:
+- 8 tournaments
+- 1,256 unique judge panels
+- 904 judges
+- 7,936 competitor-by-judge observations
 
 ### Figure 1. Mean Rank by Raw Speaking Position
 
-![Mean rank by speaking position](figures/mean_rank_by_position.png)
+![Figure 1. Mean rank by raw speaking position](figures/mean_rank_by_position.png)
 
-X-axis: raw speaking position within a panel, such as 1st speaker, 2nd speaker, and so on. Y-axis: mean judge-assigned rank, where lower rank is better. This figure shows the average outcome at each exact speaking slot.
+X-axis: exact speaking slot within a panel, such as 1st speaker, 2nd speaker, and so on. Y-axis: mean judge-assigned rank, where lower rank is better. This shows the average result at each literal speaking position.
 
 ### Figure 2. Mean Rank by Normalized Speaking Position
 
-![Mean rank by normalized position](figures/mean_rank_by_normalized_position.png)
+![Figure 2. Mean rank by normalized speaking position](figures/mean_rank_by_normalized_position.png)
 
-X-axis: normalized speaking position from 0 to 1, where 0 is the earliest speaker in a panel and 1 is the latest. Y-axis: mean judge-assigned rank, where lower rank is better. The blue series shows average rank by position band, and the red line is the fitted linear trend.
+X-axis: normalized speaking position from 0 to 1, where 0 is the earliest speaker in a panel and 1 is the latest. Y-axis: mean judge-assigned rank, where lower rank is better. Blue points trace the binned averages, and the red line is the fitted linear trend.
 
-### Figure 3. Early vs. Middle vs. Late Speaking Positions
+### Figure 3. Early, Middle, and Late Speaking Positions
 
-![Early middle late comparison](figures/early_middle_late_comparison.png)
+![Figure 3. Early, middle, and late speaking positions](figures/early_middle_late_comparison.png)
 
-X-axis: grouped speaking-order bins: early, middle, and late. These are based on normalized speaking position: `early = 0.00 to 0.33`, `middle = 0.33 to 0.66`, and `late = 0.66 to 1.00`. Y-axis: mean judge-assigned rank, where lower rank is better. This figure is the clearest grouped comparison of whether earlier or later speaking slots tend to do better.
+X-axis: grouped speaking-order bins. `early` means normalized position `0.00-0.33`, `middle` means `0.33-0.66`, and `late` means `0.66-1.00`. Y-axis: mean judge-assigned rank, where lower rank is better. This gives a simple grouped comparison instead of exact slot-by-slot averages.
 
 ### Figure 4. Quadratic Model Prediction Curve
 
-![Quadratic model prediction curve](figures/model_prediction_curve.png)
+![Figure 4. Quadratic model prediction curve](figures/model_prediction_curve.png)
 
-X-axis: normalized speaking position from earliest to latest. Y-axis: predicted rank from the quadratic model, where lower rank is better. In plain terms, this checks whether the line should curve rather than stay mostly straight, for example if the very first or very last speakers do unusually well or badly compared with the middle.
+X-axis: normalized speaking position from earliest to latest. Y-axis: predicted rank from the quadratic model, where lower rank is better. In plain terms, this asks whether the first or last speakers look unusually advantaged or disadvantaged relative to the middle, rather than assuming the pattern is a straight line.
 
 ### Figure 5. Panel Size Distribution
 
-![Panel size distribution](figures/panel_size_distribution.png)
+![Figure 5. Panel size distribution](figures/panel_size_distribution.png)
 
-X-axis: panel size, meaning the number of competitors in a judge panel. Y-axis: number of observations in the cleaned dataset. This figure shows how much of the analysis comes from smaller versus larger extemp panels.
+X-axis: panel size, meaning the number of competitors in a judge panel. Y-axis: observation count in the cleaned dataset. This shows how much of the analysis comes from 4-speaker, 5-speaker, 6-speaker, 7-speaker, and 8-speaker panels.
 
-## Data Source
+## Methods
 
-The source data comes from Tabroom round-results ballot pages that include competitor names, judges, speaking order, and ranks.
+Each observation is a competitor-by-judge row from a Tabroom round-results ballot page. Panels were kept only when speaking positions were numeric, started at 1, were complete within the panel, and had no duplicate competitors inside the same `tournament + event + round_id + judge` panel.
 
-## What Was Measured
-
-- Speaking position within a judge panel
-- Judge-assigned rank, where lower rank is better
-- Normalized speaking position and early / middle / late bins
-
-## How To Interpret Results
-
+Interpretation rules:
+- Lower rank = better
 - Negative slope on normalized position suggests recency bias
 - Positive slope suggests primacy bias
 - A meaningful quadratic term suggests edge effects
 
-Current high-level result: **primacy bias**.
+Current model summary:
+- Linear slope on normalized position: `-0.0592`, `p = 0.3416`
+- Quadratic term on normalized position squared: `-0.2083`, `p = 0.3296`
 
 ## Files
 
-- `02_gabrielino_raw_round_data.csv`: extracted raw competitor-by-judge rows
+- `01_candidate_pages.md`: standardized extemp round-results pages included in the search frame
 - `03_cleaned_data.csv`: cleaned analysis dataset
 - `03_model_results.csv`: regression outputs
 - `03_analysis_summary.md`: concise results summary
-- `figures/`: analysis figures
+- `figures/`: analysis figures used in the README and site
 - `site/`: GitHub Pages-ready static site
 
 ## View The Site Locally
@@ -76,41 +78,46 @@ Then open `http://localhost:8000/site/`.
 
 ```bash
 cd /Users/minnalkunnan/Desktop/research/extemp_analysis
-git init
 git add .
-git commit -m "Add speaking-order bias analysis site"
-git branch -M main
-git remote add origin <YOUR_REPO_URL>
+git commit -m "Update project to standardized extemp sample"
 git push -u origin main
 ```
 
-Then enable GitHub Pages in the repository settings and set the source to deploy from the `main` branch, `/site` folder if using a Pages action or the root branch if you publish the built site as configured in your repo workflow.
+Then enable GitHub Pages in the repository settings and set the source to deploy from the `main` branch, `/site` folder.
 
 ## Tournaments Surveyed
 
-### 2026
+These are the tournaments that actually contributed usable round-level extemp data to the standardized analysis.
 
-- East Los Angeles NSDA 2026 Nat Quals Speech: rounds surveyed included Round 1, Round 2, Round 3, Round 4, and Round 5.
-- Gabrielino Screamin Eagles GAB GAB GAB Speech Invitational: rounds surveyed included Finals, Round 1, Round 2, and Round 3.
-- SCDL State Quals SPEECH: rounds surveyed included Finals, Semis, Round 1, Round 2, and Round 3.
+### 2025-26
 
-### 2025
+- `state_qual`: SCDL State Quals SPEECH. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Semifinals, Round 1, Round 2, Round 3.
+- `nat_qual`: East Los Angeles District Tournament. Rounds retained: Final, SemisB, RD1B, RD2B, RD3B.
 
-- 39th Annual Stanford Invitational: rounds surveyed included Finals, Semifinals, Quarterfinals, Round 1, Round 2, Round 3, and Round 4.
-- East Los Angeles NSDA 2025 Nat Quals Speech: rounds surveyed included Round 1, Round 2, Round 3, Round 4, and Round 5.
-- Gabrielino Screamin Eagles GAB GAB GAB Speech Invitational: rounds surveyed included Finals, Round 1, Round 2, and Round 3.
-- Jack Howe Memorial Tournament: rounds surveyed included Finals, Semifinals, Round 1, Round 2, Round 3, and Round 4.
-- Loyola Invitational: tournament was surveyed for attendance and extemp availability, but no usable extemp round-results pages were retained in this pass.
+### 2024-25
 
-### 2024
+- `state`: California High School Speech Association State Championship. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3.
+- `state_qual`: GGSA State Quals. Rounds retained: Semi-Finals, Round 1, Round 2, Round 3.
+- `state_qual`: CHSSA CVFL Speech Quals Mira Loma. Rounds retained: Finals, Round 1, Round 2, Round 3.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Semifinals, Round 1, Round 2, Round 3.
+- `nat_qual`: East Los Angeles District Tournament. Rounds retained: FINAL, SEMI, RD1, RD2, RD3.
 
-- Gabrielino Invitational Speech Tournament GAB GAB GAB: tournament was surveyed, but the extemp results available in this pass were cumulative event-results pages rather than usable round-results pages.
+### 2023-24
 
-### 2023
+- `state`: California High School Speech Association State Championship. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3.
+- `state_qual`: GGSA State Quals. Rounds retained: Semi-Finals, Round 1, Round 2, Round 3.
+- `state_qual`: CFL Speech CHSSA State Quals. Rounds retained: Finals, Round 1, Round 2, Round 3.
+- `state_qual`: CVFL CHSSA Speech Qualifier Ponderosa. Rounds retained: Finals, Round 1, Round 2, Round 3.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Final or Finals, Semifinals, Round 1, Round 2, Round 3.
+- `nat_qual`: East Los Angeles District Tournament. Rounds retained: Final, Semis, RD 1, RD 2, RD 3.
 
-- Jack Howe Memorial Tournament: rounds surveyed included Finals, Semifinals, Round 1, Round 2, Round 3, and Round 4.
-- La Reina Invitational: rounds surveyed included Finals, Round 1, Round 2, and Round 3.
+### 2022-23
 
-### 2022
+- `state`: California High School Speech Association State Championship. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3.
+- `state_qual`: GGSA State Quals. Rounds retained: Semi-Finals, Round 1, Round 2, Round 3.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Round 1, Round 2, Round 3.
+- `nat_qual`: East Los Angeles District Tournament. Rounds retained: Finals, SEMI B, RD 1B, RD 2B, RD 3B.
 
-- Gabrielino Invitational Speech Tournament GAB GAB GAB: tournament was surveyed, but the extemp results available in this pass were cumulative event-results pages rather than usable round-results pages.
+Not retained in the final cleaned sample:
+- `2025-26 state`: California High School Speech Association State Championship was in the search universe, but the extemp results pages available in this pass did not yield usable posted `round_results` links, so it does not contribute observations to the final analysis.

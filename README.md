@@ -6,6 +6,12 @@ This project studies whether speaking order is associated with judge-assigned ra
 
 The current standardized analysis finds **no clear speaking-order bias**. Later speakers do not show a statistically reliable advantage, earlier speakers do not show a statistically reliable advantage, and the quadratic model does not show meaningful edge effects.
 
+Model evidence:
+- Linear normalized-position slope: `-0.0592` with `p = 0.3416`
+- Quadratic normalized-position-squared term: `-0.2083` with `p = 0.3296`
+- Linear model `R^2 = 0.0001`
+- Quadratic model `R^2 = 0.0002`
+
 Key sample stats:
 - 8 tournaments
 - 1,256 unique judge panels

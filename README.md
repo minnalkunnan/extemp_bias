@@ -78,26 +78,6 @@ Current model summary:
 - `figures/`: analysis figures used in the README and site
 - `site/`: GitHub Pages-ready static site
 
-## View The Site Locally
-
-```bash
-cd /Users/minnalkunnan/Desktop/research/extemp_analysis
-python -m http.server 8000
-```
-
-Then open `http://localhost:8000/site/`.
-
-## Publish With GitHub Pages
-
-```bash
-cd /Users/minnalkunnan/Desktop/research/extemp_analysis
-git add .
-git commit -m "Update project to standardized extemp sample"
-git push -u origin main
-```
-
-Then enable GitHub Pages in the repository settings and set the source to deploy from the `main` branch, `/site` folder.
-
 ## Tournaments Surveyed
 
 These are the tournaments that actually contributed usable round-level extemp data to the standardized analysis.

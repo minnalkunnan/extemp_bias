@@ -1,29 +1,29 @@
 # Speaking Order Bias In Extemporaneous Speaking
 
-This project studies whether speaking order is associated with judge-assigned rank in extemporaneous speaking rounds collected from Tabroom ballot pages. The main version of the analysis now uses a standardized California championship-path sample: CHSSA state championships, CHSSA state qualifiers, and NSDA district national-qualifier tournaments.
+This project studies whether speaking order is associated with judge-assigned rank in extemporaneous speaking rounds collected from Tabroom ballot pages. The main version of the analysis now uses a standardized California championship-path sample across six seasons, built from CHSSA state championships, CHSSA state qualifiers, and NSDA district national-qualifier tournaments.
 
 ## Results
 
-The current standardized analysis finds **no clear speaking-order bias**. Later speakers do not show a statistically reliable advantage, earlier speakers do not show a statistically reliable advantage, and the quadratic model does not show meaningful edge effects.
+The current standardized analysis finds **no clear speaking-order bias**. Later speakers do not show a statistically reliable advantage, earlier speakers do not show a statistically reliable advantage, and the quadratic model does not reach conventional significance for edge effects.
 
 Hypothesis test framing:
 - Null hypothesis (`H0`): speaking order is not associated with judge-assigned rank in this sample.
 - Alternative hypothesis (`H1`): speaking order is associated with judge-assigned rank in this sample.
-- Linear test result: the normalized-position coefficient is `-0.0592` with `p = 0.3416`, so at conventional significance thresholds we **fail to reject the null hypothesis** for a linear primacy or recency effect.
-- Quadratic test result: the normalized-position-squared coefficient is `-0.2083` with `p = 0.3296`, so we also **fail to reject the null hypothesis** for a curved or edge-effect pattern.
+- Linear test result: the normalized-position coefficient is `-0.0632` with `p = 0.2294`, so at conventional significance thresholds we **fail to reject the null hypothesis** for a linear primacy or recency effect.
+- Quadratic test result: the normalized-position-squared coefficient is `-0.3352` with `p = 0.0635`, so we also **fail to reject the null hypothesis** for a curved or edge-effect pattern at the 0.05 level.
 - Interpretation: average ranks vary across exact speaking slots, but the overall early-to-late pattern is not statistically reliable in the standardized sample.
 
 Model evidence:
-- Linear normalized-position slope: `-0.0592` with `p = 0.3416`
-- Quadratic normalized-position-squared term: `-0.2083` with `p = 0.3296`
+- Linear normalized-position slope: `-0.0632` with `p = 0.2294`
+- Quadratic normalized-position-squared term: `-0.3352` with `p = 0.0635`
 - Linear model `R^2 = 0.0001`
-- Quadratic model `R^2 = 0.0002`
+- Quadratic model `R^2 = 0.0004`
 
 Key sample stats:
 - 8 tournaments
-- 1,256 unique judge panels
-- 904 judges
-- 7,936 competitor-by-judge observations
+- 1,773 unique judge panels
+- 1,247 judges
+- 11,327 competitor-by-judge observations
 
 ### Figure 1. Mean Rank by Raw Speaking Position
 
@@ -66,8 +66,8 @@ Interpretation rules:
 - A meaningful quadratic term suggests edge effects
 
 Current model summary:
-- Linear slope on normalized position: `-0.0592`, `p = 0.3416`
-- Quadratic term on normalized position squared: `-0.2083`, `p = 0.3296`
+- Linear slope on normalized position: `-0.0632`, `p = 0.2294`
+- Quadratic term on normalized position squared: `-0.3352`, `p = 0.0635`
 
 ## Files
 
@@ -132,5 +132,20 @@ These are the tournaments that actually contributed usable round-level extemp da
 - `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Round 1, Round 2, Round 3.
 - `nat_qual`: East Los Angeles District Tournament. Rounds retained: Finals, SEMI B, RD 1B, RD 2B, RD 3B.
 
-Not retained in the final cleaned sample:
-- `2025-26 state`: California High School Speech Association State Championship was in the search universe, but the extemp results pages available in this pass did not yield usable posted `round_results` links, so it does not contribute observations to the final analysis.
+### 2021-22
+
+- `state`: California High School Speech Association State Championship. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3, Round 4.
+- `state_qual`: GGSA State Quals. Rounds retained: Semi-Finals, Round 1, Round 2, Round 3.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Semifinals, Round 1, Round 2, Round 3.
+
+### 2020-21
+
+- `state`: California High School Speech Association State Championship. Rounds retained: Finals, Semis, Round 1, Round 2, Round 3, Round 4.
+- `nat_qual`: Southern California District Tournament. Rounds retained: Finals, Semi Final or Semis, Round 1, Round 2, Round 3.
+
+Search universe but not retained in the final cleaned sample:
+- `2025-26 state`: California High School Speech Association State Championship was in the search universe, but the extemp results pages available in this pass did not yield usable posted `round_results` links.
+- `2019-20 nat_qual`: Southern California District Tournament appeared in the search universe, but its extemp events did not produce usable posted `round_results` links in this pass.
+- `2019-20 nat_qual`: East Los Angeles District Tournament appeared in the search universe, but its extemp events did not produce usable posted `round_results` links in this pass.
+- `2020-21 nat_qual`: East Los Angeles District Tournament appeared in the search universe, but its extemp events did not produce usable posted `round_results` links in this pass.
+- `2021-22 nat_qual`: East Los Angeles District Tournament appeared in the search universe, but its extemp events did not produce usable posted `round_results` links in this pass.
